@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#081322">
+  <meta name="description" content="Jelajahi 5 misi ELECTRA melalui kartu pembelajaran asli, simulasi rangkaian listrik searah, materi arus listrik searah, sistem poin keyakinan, dan pembahasan setiap pilihan jawaban.">
+  <title>ELECTRA — Laboratorium Kartu Interaktif</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23081322'/%3E%3Cpath d='M18 3 7 18h8l-1 11 11-16h-8z' fill='%2364e6e2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
+  <script src="physics.js" defer></script>
+  <script src="scoring.js" defer></script>
+  <script src="material.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke misi</a>
+  <header class="header">
+    <a class="brand" href="#misi-1" aria-label="ELECTRA, misi pertama"><span class="brand-mark" aria-hidden="true">ϟ</span><span>ELECTRA<small>LABORATORIUM KARTU INTERAKTIF</small></span></a>
+    <div class="header-right"><nav class="section-nav" aria-label="Bagian situs"><a href="#misi-1" data-section="game">Permainan kartu</a><a href="#materi" data-section="material">Materi DC</a></nav><button class="button subtle" id="help-button">Cara bermain</button></div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Navigasi misi">
+      <div class="sidebar-caption">JELAJAHI MISI <span>05</span></div>
+      <nav id="mission-nav" aria-label="Pilih misi"></nav>
+      <div class="sidebar-note"><span class="mini-bolt" aria-hidden="true">ϟ</span><strong>Satu rangkaian.<br>Banyak cara memahami.</strong><p>Amati, coba simulasinya, lalu hubungkan representasinya.</p></div>
+      <div class="progress-block"><div><span>Misi dinilai</span><b id="progress-text">0 / 5</b></div><progress id="progress" max="5" value="0" aria-label="Misi yang sudah dinilai"></progress><small>Progres selama halaman ini terbuka.</small></div>
+    </aside>
+    <div class="main-column"><section id="game-status" class="game-status" aria-label="Skor permainan"></section><main id="main" tabindex="-1"></main></div>
+  </div>
+  <footer><span class="footer-brand">ELECTRA</span><span>Media pembelajaran fisika berbasis multirepresentasi</span><span>5 misi · 26 kartu</span></footer>
+  <dialog id="card-dialog" class="card-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><h2 id="dialog-title">Kartu ELECTRA</h2><button class="icon-button" data-close="card-dialog" aria-label="Tutup kartu">✕</button></div><div id="dialog-content"></div></dialog>
+  <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title"><div class="dialog-head"><h2 id="help-title">Aturan permainan & poin</h2><button class="icon-button" data-close="help-dialog" aria-label="Tutup petunjuk">✕</button></div><ol class="help-steps"><li><b>Mulai dengan modal 10 poin per misi.</b><p>Ada 5 misi. Total modal awal adalah 50 poin; setiap misi dapat menghasilkan 0–20 poin.</p></li><li><b>Pelajari kartu dan simulasinya.</b><p>Baca materi DC jika diperlukan. Kartu pertama adalah misi; tekan gambar untuk memperbesar.</p></li><li><b>Pilih jawaban dan tingkat keyakinan.</b><p>Pilih satu dari empat kartu jawaban, lalu keyakinan 1–5: Tidak yakin, Kurang yakin, Ragu-ragu, Yakin, atau Sangat yakin.</p></li><li><b>Periksa jawaban untuk menghitung poin.</b><p>Benar: 10 + 5 + keyakinan. Salah: 10 − 5 − keyakinan. Jawaban dan keyakinan dikunci saat diperiksa.</p></li><li><b>Pelajari pembahasan dan lanjutkan misi.</b><p>Jawaban pertama tiap misi dihitung satu kali. Latihan ulang tidak mengubah poin. Selesaikan lima misi untuk melihat skor akhir dari maksimum 100 poin.</p></li></ol><div class="table-scroll"><table class="lesson-table"><caption>Skor akhir satu misi</caption><thead><tr><th>Keyakinan</th><th>Benar</th><th>Salah</th></tr></thead><tbody><tr><th>1 · Tidak yakin</th><td>16 poin</td><td>4 poin</td></tr><tr><th>2 · Kurang yakin</th><td>17 poin</td><td>3 poin</td></tr><tr><th>3 · Ragu-ragu</th><td>18 poin</td><td>2 poin</td></tr><tr><th>4 · Yakin</th><td>19 poin</td><td>1 poin</td></tr><tr><th>5 · Sangat yakin</th><td>20 poin</td><td>0 poin</td></tr></tbody></table></div><p class="model-note">Poin berlaku selama sesi halaman ini terbuka. Memuat ulang halaman atau memulai permainan baru mengembalikan modal menjadi 50 poin. Skor ini adalah aturan permainan, bukan ukuran baku kemampuan fisika.</p><p class="model-note">Simulasi menggunakan sumber ideal dan kabel tanpa hambatan. Lampu dimodelkan sebagai hambatan tetap; nyalanya hanya ilustrasi. Nilai tambahan pada misi 1, 2, dan 4 merupakan contoh simulasi.</p><button class="button primary" data-close="help-dialog">Mulai bermain</button></dialog>
+  <dialog id="score-dialog" class="score-dialog" aria-labelledby="score-title"><div class="dialog-head"><h2 id="score-title">Rekap poin ELECTRA</h2><button class="icon-button" data-close="score-dialog" aria-label="Tutup rekap poin">✕</button></div><div id="score-content"></div></dialog>
+  <dialog id="restart-dialog" class="help-dialog" aria-labelledby="restart-title"><div class="dialog-head"><h2 id="restart-title">Mulai permainan baru?</h2><button class="icon-button" data-close="restart-dialog" aria-label="Batal memulai permainan baru">✕</button></div><p>Jawaban, keyakinan, dan skor sesi ini akan dihapus. Kelima misi kembali dimulai dengan modal 10 poin masing-masing, sehingga total modal kembali 50 poin.</p><div class="answer-actions"><button class="button subtle" data-close="restart-dialog">Batal</button><button class="button primary" id="confirm-restart">Ya, mulai baru</button></div></dialog>
+  <noscript><p class="no-script">Aktifkan JavaScript agar kartu, jawaban, dan simulasi ELECTRA dapat digunakan.</p></noscript>
+</body>
+</html>
